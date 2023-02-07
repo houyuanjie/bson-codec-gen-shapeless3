@@ -62,8 +62,8 @@ trait DecoderInstances:
         [A] =>
           (acc: Acc, decoder: Decoder[A]) => {
             val (doc, elems) = acc
-            val result = elems.headOption.map(doc.get).flatMap(decoder.decode)
-            ((doc, elems.tail), result)
+            val elem = elems.headOption.map(doc.get).flatMap(decoder.decode)
+            ((doc, elems.tail), elem)
         }
       )
 
